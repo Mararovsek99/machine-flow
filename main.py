@@ -12,15 +12,8 @@ for i in range(10):
 
     print(f"\n--- Simulation cycle {i + 1} ---")
 
-    for machine in simulator.machines:
-        print(
-            machine.machine_id,
-            machine.status,
-            f"RPM: {machine.rpm}",
-            f"Load: {machine.spindle_load}%",
-            f"Temp: {machine.temperature}°C",
-            f"Parts: {machine.parts_produced}",
-        )
+    for machine_data in simulator.get_all_data():
+        print(machine_data)
 
     time.sleep(1)
 

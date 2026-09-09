@@ -28,3 +28,14 @@ class CNCMachine:
 
             if random.random() < 0.3:
                 self.parts_produced += 1
+
+    def get_data(self):
+        return {
+            "machine_id": self.machine_id,
+            "name": self.name,
+            "status": self.status,
+            "rpm": self.rpm,
+            "spindle_load": self.spindle_load,
+            "temperature": self.temperature,
+            "parts_produced": self.parts_produced,
+        }

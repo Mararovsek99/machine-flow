@@ -22,3 +22,6 @@ class MachineSimulator:
     def stop_all(self):
         for machine in self.machines:
             machine.stop()
+
+    def get_all_data(self):
+        return [machine.get_data() for machine in self.machines]
