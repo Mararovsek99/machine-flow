@@ -1,22 +1,27 @@
 import time
 
-from src.machine_flow.machine import CNCMachine
+from src.machine_flow.simulator import MachineSimulator
 
 
-machine = CNCMachine("CNC-01", "Machine 1")
+simulator = MachineSimulator()
 
-machine.start()
+simulator.start_all()
 
 for i in range(10):
-    machine.update_data()
+    simulator.update_all()
 
-    print(
-        machine.machine_id,
-        machine.status,
-        machine.rpm,
-        machine.spindle_load,
-        machine.temperature,
-        machine.parts_produced,
-    )
+    print(f"\n--- Simulation cycle {i + 1} ---")
+
+    for machine in simulator.machines:
+        print(
+            machine.machine_id,
+            machine.status,
+            f"RPM: {machine.rpm}",
+            f"Load: {machine.spindle_load}%",
+            f"Temp: {machine.temperature}°C",
+            f"Parts: {machine.parts_produced}",
+        )
 
     time.sleep(1)
+
+simulator.stop_all()
